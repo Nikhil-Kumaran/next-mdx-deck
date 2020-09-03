@@ -142,7 +142,7 @@ const GlobalStyle = createGlobalStyle`
     font-size: 0.75em !important;
 
     display: inline-block;
-    overflow-x: scroll;
+    overflow-x: auto;
 
     margin: 2rem 0;
 
@@ -217,7 +217,7 @@ export default function SlidePage({ children }) {
   const { currentSlide, setSlide } = useCurrentSlide()
   const router = useRouter()
   const totalPages = useTotalPages()
-  const {mode, setMode} = useMode()
+  const { mode, setMode } = useMode()
 
   const NEXT = [13, 32, 39]
   const PREV = 37
@@ -230,10 +230,18 @@ export default function SlidePage({ children }) {
       if (keyCode === PRESENTER) {
         if (mode === MODES.SPEAKER) {
           setMode(MODES.SLIDESHOW)
-          router.push(router.pathname, `/slides/${router.query.slide}?mode=${MODES.SLIDESHOW}#${currentSlide}`, {shallow:true})
+          router.push(
+            router.pathname,
+            `/slides/${router.query.slide}?mode=${MODES.SLIDESHOW}#${currentSlide}`,
+            { shallow: true }
+          )
         } else {
           setMode(MODES.SPEAKER)
-          router.push(router.pathname, `/slides/${router.query.slide}?mode=${MODES.SPEAKER}#${currentSlide}`, {shallow:true})
+          router.push(
+            router.pathname,
+            `/slides/${router.query.slide}?mode=${MODES.SPEAKER}#${currentSlide}`,
+            { shallow: true }
+          )
         }
         return false
       }
@@ -243,7 +251,9 @@ export default function SlidePage({ children }) {
     if (keyCode === PREV && currentSlide === 0) {
       if (router.query && router.query.slide) {
         if (router.query.slide > 1) {
-          router.push(`/slides/${parseInt(router.query.slide, 10) - 1}?mode=${mode}#999`)
+          router.push(
+            `/slides/${parseInt(router.query.slide, 10) - 1}?mode=${mode}#999`
+          )
         }
       }
       return false
@@ -254,7 +264,9 @@ export default function SlidePage({ children }) {
       if (router.query && router.query.slide) {
         // Check for max page count
         if (router.query.slide < totalPages) {
-          router.push(`/slides/${parseInt(router.query.slide, 10) + 1}?mode=${mode}`)
+          router.push(
+            `/slides/${parseInt(router.query.slide, 10) + 1}?mode=${mode}`
+          )
         }
       }
       return false
@@ -263,12 +275,18 @@ export default function SlidePage({ children }) {
     // Handle slide changes
     if (NEXT.indexOf(keyCode) !== -1) {
       setSlide((prevState) => {
-        router.push(`${router.pathname}`, `/slides/${router.query.slide}?mode=${mode}#${prevState + 1}`)
+        router.push(
+          `${router.pathname}`,
+          `/slides/${router.query.slide}?mode=${mode}#${prevState + 1}`
+        )
         return prevState + 1
       })
     } else if (keyCode === PREV) {
       setSlide((prevState) => {
-        router.push(`${router.pathname}`, `/slides/${router.query.slide}?mode=${mode}#${prevState - 1}`)
+        router.push(
+          `${router.pathname}`,
+          `/slides/${router.query.slide}?mode=${mode}#${prevState - 1}`
+        )
         return prevState - 1
       })
     }
@@ -334,7 +352,11 @@ export default function SlidePage({ children }) {
 
     // Return current slide
     if (currentSlide === 999) {
-      router.push(router.pathname, `/slides/${router.query.slide}?mode=${mode}#${slideCount}`, { shallow: true })
+      router.push(
+        router.pathname,
+        `/slides/${router.query.slide}?mode=${mode}#${slideCount}`,
+        { shallow: true }
+      )
       setSlide(slideCount)
     }
     return <Slide>{generatedSlides[currentSlide]}</Slide>

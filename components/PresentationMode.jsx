@@ -10,7 +10,7 @@ const PresentationFrame = styled.div`
 
 const SlideWindow = styled.div`
   width: 65%;
-  overflow-y: scroll;
+  overflow-y: auto;
 
   & > div {
     padding: 1rem;
@@ -19,8 +19,8 @@ const SlideWindow = styled.div`
 
   #slide {
     border: 1px solid #fff;
-    align-items:flex-start;
-    height:auto;
+    align-items: flex-start;
+    height: auto;
   }
 `
 
@@ -35,7 +35,7 @@ const Sidebar = styled.div`
 const SpeakerNotesWindow = styled.div`
   width: 100%;
   height: 50vh;
-  overflow-y: scroll;
+  overflow-y: auto;
   border: 1px solid #fff;
 
   font-size: 16px;
