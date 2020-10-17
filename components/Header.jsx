@@ -5,7 +5,7 @@ export default function Header({ name, title, date, url }) {
   return (
     <header>
       <div>
-        <a href={url}>
+        <a target="_blank" href={url}>
           <span>{name}</span>
         </a>{' '}
         —{' '}
