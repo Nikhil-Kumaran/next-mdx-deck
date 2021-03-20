@@ -11,7 +11,7 @@ export default ({ Component, pageProps }) => (
     <MDXProvider>
       <CurrentSlideProvider>
         <ModeProvider>
-          <AnimatePresence exitBeforeEnter>
+          <AnimatePresence>
             <TransitionPage>
               <Component {...pageProps} />
             </TransitionPage>

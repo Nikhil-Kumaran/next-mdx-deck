@@ -10,6 +10,7 @@ import { useMode } from '../context/ModeContext'
 import { useCurrentSlide } from '../context/CurrentSlideContext'
 import { Storage } from '../hooks/useStorage'
 import { MODES } from '../constants/modes'
+import TransitionPage from './TransitionPage'
 
 const GlobalStyle = createGlobalStyle`
   :root {
@@ -371,9 +372,11 @@ export default function SlidePage({ children }) {
         notes={slideNotes()}
         currentSlide={currentSlide}
       >
+      <TransitionPage>
         <div id="slide" style={{ width: '100%' }}>
           {renderSlide()}
         </div>
+        </TransitionPage>
       </PresentationMode>
     </Swipeable>
   )
