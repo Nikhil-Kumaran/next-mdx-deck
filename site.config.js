@@ -1,9 +1,9 @@
 export const siteConfig = {
   name: `@nikhilkumaran`,
-  title: `NextJS MDX Deck`,
-  date: `April 22, 2020`,
+  title: `UI component library with React + TypeScript + Tailwind CSS`,
+  date: `April 27-28, 2021`,
   author: {
-    url: `https://twitter.com/iNikhilKumaran`,
+    url: `https://nikhilkumaran.dev`,
   },
 }
 
